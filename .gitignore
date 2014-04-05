@@ -1,0 +1,4 @@
+*.box
+*.swp
+packer_cache
+output-*
