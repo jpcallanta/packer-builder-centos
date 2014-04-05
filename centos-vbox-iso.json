@@ -1,0 +1,46 @@
+{
+  "builders": [
+    {
+      "type": "virtualbox-iso",
+      "iso_url": "http://mirror.es.its.nyu.edu/centos/6.5/isos/x86_64/CentOS-6.5-x86_64-minimal.iso",
+      "iso_checksum": "0d9dc37b5dd4befa1c440d2174e88a87",
+      "iso_checksum_type": "md5",
+      "headless": false,
+      "http_directory": ".",
+      "ssh_username": "root",
+      "ssh_password": "vagrant",
+      "ssh_port": 22,
+      "ssh_wait_timeout": "10m",
+      "shutdown_command": "shutdown -h now going down",
+      "disk_size": 20480,
+      "guest_os_type": "RedHat_64",
+      "boot_command": [
+        "<tab> text ks=http://{{.HTTPIP}}:{{.HTTPPort}}/ks.cfg<enter><wait>"
+      ],
+      "boot_wait": "10s",
+      "vboxmanage": [
+        ["modifyvm", "{{.Name}}", "--memory", "1024"],
+        ["modifyvm", "{{.Name}}", "--cpus", "1"]
+      ],
+      "vm_name": "packer-centos-65-64"
+    }
+  ],
+
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "vbox-guest.sh"
+    }
+    {
+      "type": "shell",
+      "script": "centos65.sh"
+    }
+  ]
+
+ "post-processors": [
+      {
+          "type": "vagrant",
+          "output": "centos-6_4-64_vmware.box"
+      }
+  ]
+}

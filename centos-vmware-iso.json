@@ -1,0 +1,44 @@
+{
+  "builders": [
+    {
+      "type": "vmware-iso",
+      "iso_url": "http://mirror.es.its.nyu.edu/centos/6.5/isos/x86_64/CentOS-6.5-x86_64-minimal.iso",
+      "iso_checksum": "0d9dc37b5dd4befa1c440d2174e88a87",
+      "iso_checksum_type": "md5",
+      "skip_compaction": true,
+      "tools_upload_flavor": "linux",
+      "headless": false,
+      "http_directory": ".",
+      "ssh_username": "root",
+      "ssh_password": "vagrant",
+      "ssh_port": 22,
+      "ssh_wait_timeout": "10m",
+      "shutdown_command": "shutdown -h now going down",
+      "disk_size": 20480,
+      "guest_os_type": "linux",
+      "boot_command": [
+        "<tab> text ks=http://{{.HTTPIP}}:{{.HTTPPort}}/ks.cfg<enter><wait>"
+      ],
+      "boot_wait": "10s",
+      "vm_name": "packer-centos-65-64"
+    }
+  ],
+
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "vmware-tools.sh"
+    },
+    {
+      "type": "shell",
+      "script": "centos65.sh"
+    }
+  ],
+
+ "post-processors": [
+      {
+          "type": "vagrant",
+          "output": "centos-6_4-64_vmware.box"
+      }
+  ]
+}
