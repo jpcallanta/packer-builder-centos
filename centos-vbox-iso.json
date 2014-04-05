@@ -30,17 +30,10 @@
     {
       "type": "shell",
       "script": "vbox-guest.sh"
-    }
+    },
     {
       "type": "shell",
       "script": "centos65.sh"
     }
-  ],
-
- "post-processors": [
-      {
-          "type": "vagrant",
-          "output": "centos-6_4-64_vmware.box"
-      }
   ]
 }
