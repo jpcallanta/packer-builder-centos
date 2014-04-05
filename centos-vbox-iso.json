@@ -22,7 +22,7 @@
         ["modifyvm", "{{.Name}}", "--memory", "1024"],
         ["modifyvm", "{{.Name}}", "--cpus", "1"]
       ],
-      "vm_name": "packer-centos-65-64"
+      "vm_name": "packer-centos64bit-65"
     }
   ],
 
