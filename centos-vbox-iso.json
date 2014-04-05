@@ -10,7 +10,7 @@
       "ssh_username": "root",
       "ssh_password": "vagrant",
       "ssh_port": 22,
-      "ssh_wait_timeout": "10m",
+      "ssh_wait_timeout": "10m",  // Increase this if your box is slooow
       "shutdown_command": "shutdown -h now going down",
       "disk_size": 20480,
       "guest_os_type": "RedHat_64",
@@ -35,7 +35,7 @@
       "type": "shell",
       "script": "centos65.sh"
     }
-  ]
+  ],
 
  "post-processors": [
       {
