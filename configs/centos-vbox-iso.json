@@ -1,11 +1,10 @@
 {
   "builders": [
     {
-      "type": "vmware-iso",
+      "type": "virtualbox-iso",
       "iso_url": "http://mirror.es.its.nyu.edu/centos/6.5/isos/x86_64/CentOS-6.5-x86_64-minimal.iso",
       "iso_checksum": "0d9dc37b5dd4befa1c440d2174e88a87",
       "iso_checksum_type": "md5",
-      "skip_compaction": true,
       "headless": false,
       "http_directory": ".",
       "ssh_username": "root",
@@ -14,11 +13,15 @@
       "ssh_wait_timeout": "45m",
       "shutdown_command": "shutdown -h now going down",
       "disk_size": 20480,
-      "guest_os_type": "linux",
+      "guest_os_type": "RedHat_64",
       "boot_command": [
-        "<tab> text ks=http://{{.HTTPIP}}:{{.HTTPPort}}/ks.cfg<enter><wait>"
+        "<tab> text ks=http://{{.HTTPIP}}:{{.HTTPPort}}/configs/ks.cfg<enter><wait>"
       ],
       "boot_wait": "10s",
+      "vboxmanage": [
+        ["modifyvm", "{{.Name}}", "--memory", "1024"],
+        ["modifyvm", "{{.Name}}", "--cpus", "1"]
+      ],
       "vm_name": "packer-centos64bit-65"
     }
   ],
@@ -26,18 +29,22 @@
   "provisioners": [
     {
       "type": "shell",
-      "script": "vmware-tools.sh"
+      "script": "scripts/vbox-guest.sh"
     },
     {
       "type": "shell",
-      "script": "vagrant.sh"
+      "script": "scripts/vagrant.sh"
+    },
+    {
+      "type": "shell",
+      "script": "scripts/provisioners.sh"
     }
   ],
 
-   "popt-processors": [
+  "post-processors": [
       {
         "type": "vagrant",
-        "output": "centos-64bit-65_vmware.box"
+        "output": "centos-64bit-65_vbox.box"
       }
     ]
 }
