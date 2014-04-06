@@ -35,5 +35,12 @@
       "type": "shell",
       "script": "vagrant.sh"
     }
-  ]
+  ],
+
+  "popt-processors": [
+      {
+        "type": "vagrant",
+        "output": "centos-64bit-65_vbox.box"
+      }
+    ]
 }
