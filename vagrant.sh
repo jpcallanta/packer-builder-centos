@@ -11,3 +11,4 @@ chmod -v 700 /home/vagrant/.ssh
 chmod -v 600 /home/vagrant/.ssh/authorized_keys
 chown -Rv vagrant:vagrant /home/vagrant/.ssh
 echo "vagrant  ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+sed -i -e 's/^Defaults    requiretty/#Defaults    requiretty/' /etc/sudoers
