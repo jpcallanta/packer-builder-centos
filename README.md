@@ -2,6 +2,7 @@ packer-builder-centos
 =====================
 
 packer vagrant box builder for CentOS 6.5
+
 [Packer: http://packer.io](http://packer.io)
 
 [Vagrant: http://vagrantup.com](http://vagrantup.com)
