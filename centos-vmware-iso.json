@@ -6,7 +6,6 @@
       "iso_checksum": "0d9dc37b5dd4befa1c440d2174e88a87",
       "iso_checksum_type": "md5",
       "skip_compaction": true,
-      "tools_upload_flavor": "linux",
       "headless": false,
       "http_directory": ".",
       "ssh_username": "root",
@@ -20,7 +19,7 @@
         "<tab> text ks=http://{{.HTTPIP}}:{{.HTTPPort}}/ks.cfg<enter><wait>"
       ],
       "boot_wait": "10s",
-      "vm_name": "packer-centos-65-64bit"
+      "vm_name": "packer-centos64bit-65"
     }
   ],
 
@@ -31,14 +30,14 @@
     },
     {
       "type": "shell",
-      "script": "centos65.sh"
+      "script": "vagrant.sh"
     }
   ],
 
-  "post-processors": [
+   "popt-processors": [
       {
-          "type": "vagrant",
-          "output": "centos-6_4-64_vmware.box"
+        "type": "vagrant",
+        "output": "centos-64bit-65_vmware.box"
       }
-  ]
+    ]
 }
