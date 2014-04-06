@@ -7,4 +7,9 @@ Usage
 =====
 
 If you have packer installed you should be able to run it like so:
-**packer build template.json** and it will output a vagrant box file.
+**packer build configs/centos-vbox-iso.json** and it will output a vagrant box file.
+
+NOTE
+====
+
+Keep in mind that Vagrant's VMware providers are not free and a licesne can be purchased here: [http://www.vagrantup.com/vmware](http://www.vagrantup.com/vmware)
