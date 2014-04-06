@@ -34,7 +34,12 @@
     {
       "type": "shell",
       "script": "vagrant.sh"
+    },
+    {
+      "type": "shell",
+      "script": "provisioners.sh"
     }
+
   ],
 
   "post-processors": [
