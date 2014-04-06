@@ -8,3 +8,4 @@ mkdir -pv /media/cdrom
 mount -t iso9660 -o loop VBoxGuestAdditions.iso /media/cdrom
 cd /media/cdrom
 ./VBoxLinuxAdditions.run
+lsmod |  grep 'vboxsf' && echo "virtualbox guess installed!"

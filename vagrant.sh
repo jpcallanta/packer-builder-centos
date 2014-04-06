@@ -9,4 +9,4 @@ mkdir -pv /home/vagrant/.ssh
 echo "${VAGRANT_PUBKEY}" >> /home/vagrant/.ssh/authorized_keys
 chmod -v 700 /home/vagrant/.ssh
 chmod -v 600 /home/vagrant/.ssh/authorized_keys
-
+chown -Rv vagrant:vagrant /home/vagrant/.ssh
