@@ -38,7 +38,7 @@
     }
   ],
 
-   "popt-processors": [
+   "post-processors": [
       {
         "type": "vagrant",
         "output": "centos-64bit-65_vmware.box"
